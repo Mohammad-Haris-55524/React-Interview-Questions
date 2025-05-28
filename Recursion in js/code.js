@@ -68,3 +68,46 @@
 
 // Problems where a recursive solution is more elegant and readable than an iterative one
 
+
+
+// Fundamental Questions
+// 1. What is recursion and how does it work in JavaScript?
+// Answer: Recursion is when a function calls itself until it reaches a base case that stops the recursion. In JavaScript, each recursive call adds to the call stack until the base case is met, then unwinds the stack.
+
+// 2. What are the two essential components of a recursive function?
+// Answer:
+
+// Base case - the condition that stops the recursion
+
+// Recursive case - where the function calls itself with modified arguments
+
+// Coding Problems
+// 3. Write a recursive function to calculate the factorial of a number
+function factorial(n) {
+  if (n <= 1) return 1; // base case
+  return n * factorial(n - 1); // recursive case
+}
+console.log(factorial(5)); // 120
+
+
+// 4. Write a recursive function to calculate the nth Fibonacci number
+function fibonacci(n) {
+  if (n <= 1) return n; // base case
+  return fibonacci(n - 1) + fibonacci(n - 2); // recursive case
+}
+console.log(fibonacci(6)); // 8
+
+
+// 5. Write a recursive function to flatten a nested array
+function flattenArray(arr) {
+  let result = [];
+  for (const item of arr) {
+    if (Array.isArray(item)) {
+      result = result.concat(flattenArray(item));
+    } else {
+      result.push(item);
+    }
+  }
+  return result;
+}
+console.log(flattenArray([1, [2, [3, 4], 5]])); // [1, 2, 3, 4, 5]
