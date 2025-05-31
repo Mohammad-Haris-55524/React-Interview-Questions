@@ -111,3 +111,39 @@ function flattenArray(arr) {
   return result;
 }
 console.log(flattenArray([1, [2, [3, 4], 5]])); // [1, 2, 3, 4, 5]
+
+
+// 6. Write a recursive function to reverse a string
+function reverseString(str) {
+  if (str === "") return "";
+  return reverseString(str.substr(1)) + str[0];
+}
+console.log(reverseString("hello")); // "olleh"
+
+
+// 7. Write a recursive function to sum all numbers from 1 to n
+function sumRange(n) {
+  if (n === 1) return 1;
+  return n + sumRange(n - 1);
+}
+console.log(sumRange(5)); // 15
+
+
+// Practical Frontend Questions
+// 8. How would you use recursion to traverse and manipulate the DOM tree?
+// Answer: Recursion is useful for DOM traversal when you need to visit every node in a tree structure.
+function traverseDOM(node, callback) {
+  callback(node);
+  node = node.firstChild;
+  while (node) {
+    traverseDOM(node, callback);
+    node = node.nextSibling;
+  }
+}
+
+// Usage:
+traverseDOM(document.body, (node) => {
+  if (node.nodeType === Node.ELEMENT_NODE) {
+    console.log(node.tagName);
+  }
+});
