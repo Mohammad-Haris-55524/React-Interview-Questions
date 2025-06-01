@@ -147,3 +147,48 @@ traverseDOM(document.body, (node) => {
     console.log(node.tagName);
   }
 });
+
+
+// 9. Write a recursive function to deeply clone an object
+function deepClone(obj) {
+  if (obj === null || typeof obj !== 'object') return obj;
+  
+  if (Array.isArray(obj)) {
+    return obj.map(item => deepClone(item));
+  }
+  
+  const cloned = {};
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      cloned[key] = deepClone(obj[key]);
+    }
+  }
+  return cloned;
+}
+
+
+// Advanced Concepts
+// 10. What are the potential problems with recursion and how can you avoid them?
+// Answer:
+
+// Stack overflow: Too many recursive calls can exceed call stack limit. Solution: Use tail recursion (if supported) or convert to 
+// iteration.
+// Performance: Recursion can be slower due to function call overhead. Solution: Memoization or iterative approach.
+// Memory: Each call adds to the call stack. Solution: Optimize base cases and recursive logic.
+
+
+// 11. What is tail recursion and how does it differ from regular recursion?
+// Answer: Tail recursion is when the recursive call is the last operation in the function. Some JavaScript engines can optimize this to
+// reuse the same stack frame (tail call optimization).
+
+// Regular factorial (not tail recursive)
+function factorial(n) {
+  if (n <= 1) return 1;
+  return n * factorial(n - 1); // Multiplication happens after recursion
+}
+
+// Tail recursive version
+function factorial(n, acc = 1) {
+  if (n <= 1) return acc;
+  return factorial(n - 1, n * acc); // Recursion is the last operation
+}
