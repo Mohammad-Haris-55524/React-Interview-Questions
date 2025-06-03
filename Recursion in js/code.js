@@ -192,3 +192,46 @@ function factorial(n, acc = 1) {
   if (n <= 1) return acc;
   return factorial(n - 1, n * acc); // Recursion is the last operation
 }
+
+
+
+// 12. How would you implement a recursive component in React?
+// Answer: React components can call themselves recursively to render nested data structures.
+function Tree({ data }) {
+  return (
+    <ul>
+      {data.map((node) => (
+        <li key={node.id}>
+          {node.name}
+          {node.children && <Tree data={node.children} />}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+
+// 14. Write a recursive function to implement binary search
+function binarySearch(arr, target, left = 0, right = arr.length - 1) {
+  if (left > right) return -1; // base case: not found
+  
+  const mid = Math.floor((left + right) / 2);
+  
+  if (arr[mid] === target) return mid; // base case: found
+  
+  if (arr[mid] > target) {
+    return binarySearch(arr, target, left, mid - 1); // search left half
+  } else {
+    return binarySearch(arr, target, mid + 1, right); // search right half
+  }
+}
+
+
+// Tips for Your Interview
+
+// Always start by clarifying the problem and edge cases
+// Explain your thought process as you write the recursive function
+// Clearly identify the base case(s) first
+// Mention potential optimizations (memoization, tail recursion)
+// Be prepared to convert a recursive solution to an iterative one if asked
+// Practice drawing the call stack for simple recursive functions
