@@ -103,3 +103,39 @@ for(const x in arr){
 // }
   
 
+// check vowels in a string
+// function checkVowel(str) {
+// // const vowels = ["a","e","i","o","u"]
+// const vowels = "aeiou"
+
+// const arrStr = str.split("")
+// // console.log(arrStr, vowels)
+// for(let arr of arrStr){
+//   // console.log(arr)
+//   if (!vowels.includes(arr)) {
+//     console.log(arr,vowels)
+//   }
+// }
+// return true
+// }
+// const strWithoutVowel =  checkVowel("A quick brown fox jumps over the lazy dog")
+// console.log(strWithoutVowel)
+
+
+const checkVowel = (str) => {
+// const vowels = ["a","e","i","o","u"]
+const vowels = "aeiou"
+const updatedArrWithoutVowel = []
+const arrStr = str.split("")
+// console.log(arrStr, vowels)
+for(let arr of arrStr){
+  // console.log(arr)
+  if (!vowels.includes(arr)) {
+    console.log(arr,vowels)
+    updatedArrWithoutVowel.push(arr)
+  }
+}
+return updatedArrWithoutVowel.join("")
+}
+console.log(checkVowel("A quick brown fox jumps over the lazy dog"))
+

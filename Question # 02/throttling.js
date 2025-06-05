@@ -54,8 +54,6 @@ function throttle(func, limit) {
   // Add throttled scroll event
   window.addEventListener('scroll', throttle(handleScroll, 200));
   
-
-
 // Explanation:
 // handleScroll is the function we want to throttle.
 // throttle takes handleScroll and a time interval (200ms) and ensures handleScroll runs at most once every 200ms.
